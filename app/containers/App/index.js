@@ -12,6 +12,16 @@
  */
 
 import React from 'react';
+import styled from 'styled-components'
+
+import ContactsPanel from '../ContactsPanel'
+
+const AppWrapper = styled.div`
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+`
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -21,9 +31,10 @@ export default class App extends React.PureComponent { // eslint-disable-line re
 
   render() {
     return (
-      <div>
+      <AppWrapper>
+        <ContactsPanel />
         {React.Children.toArray(this.props.children)}
-      </div>
+      </AppWrapper>
     );
   }
 }
