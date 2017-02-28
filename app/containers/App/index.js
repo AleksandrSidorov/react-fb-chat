@@ -12,16 +12,9 @@
  */
 
 import React from 'react';
-import styled from 'styled-components'
 
 import ContactsPanel from '../ContactsPanel'
-
-const AppWrapper = styled.div`
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  background-color: #fff;
-`
+import AppWrapper from './AppWrapper'
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 

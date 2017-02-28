@@ -6,26 +6,39 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components'
+import { createStructuredSelector } from 'reselect'
 
-const ContactsPanelWrapper = styled.div`
-  flex: 0 0 25%;
-  max-width: 420px;
-  min-width: 240px;
-  border-right: 1px solid rgba(0, 0, 0, .20);
-`
+import ContactsPanelWrapper from './ContactsPanelWrapper'
+import SearchWrapper from './SearchWrapper'
+import Label from './Label'
+import Input from './Input'
+
+import ContactsList from 'components/ContactsList'
+
+import { changeContactname } from './actions'
+import { makeSelectContactname, makeSelectContacts } from './selectors'
 
 export class ContactsPanel extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+  const { contacts, contactname } = this.props
+  console.log('CN: ', contacts);
+
     return (
       <ContactsPanelWrapper>
-        {'Contacts Panel'}
-        <ul>
-          <li>Contact 1</li>
-          <li>Contact 2</li>
-          <li>Contact 3</li>
-          <li>Contact 4</li>
-        </ul>
+        <SearchWrapper>
+          <form onSubmit={this.props.onSubmitForm}>
+            <Label>
+              <Input
+                id="contactname"
+                type="text"
+                placeholder="Search Contact"
+                value={this.props.username}
+                onChange={this.props.onChangeContactname}
+              />
+            </Label>
+          </form>
+        </SearchWrapper>
+        <ContactsList items={contacts} />
       </ContactsPanelWrapper>
     );
   }
@@ -33,13 +46,25 @@ export class ContactsPanel extends React.PureComponent { // eslint-disable-line 
 
 ContactsPanel.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  contactname: React.PropTypes.string,
+  onSubmitForm: React.PropTypes.func,
+  onChangeContactname: React.PropTypes.func,
 };
 
+const mapStateToProps = createStructuredSelector({
+  contactname: makeSelectContactname(),
+  contacts: makeSelectContacts(),
+})
 
 function mapDispatchToProps(dispatch) {
   return {
+    onChangeContactname: (evt) => dispatch(changeContactname(evt.target.value)),
+    onSubmitForm: (evt) => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault()
+      dispatch(searchContacts())
+    },
     dispatch,
   };
 }
 
-export default connect(null, mapDispatchToProps)(ContactsPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactsPanel);
