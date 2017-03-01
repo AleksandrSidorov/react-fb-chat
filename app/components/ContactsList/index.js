@@ -5,23 +5,26 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
 
+import ContactListItem from 'containers/ContactListItem'
+
+import Ul from './Ul'
 
 function ContactsList(props) {
   let content = (<li>Error</li>)
-  console.log(props.items);
 
   if (props.items) {
     content = props.items.map((item, index) => (
-      <li key={`item-${index}`}>{item.name}</li>
+      <li key={`item-${index}`}>
+        <ContactListItem item={item} />
+      </li>
     ))
   }
 
   return (
-    <ul>
+    <Ul>
       {content}
-    </ul>
+    </Ul>
   );
 }
 

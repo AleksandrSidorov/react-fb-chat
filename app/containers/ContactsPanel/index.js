@@ -21,7 +21,6 @@ import { makeSelectContactname, makeSelectContacts } from './selectors'
 export class ContactsPanel extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
   const { contacts, contactname } = this.props
-  console.log(contacts, typeof contacts);
 
     return (
       <ContactsPanelWrapper>
