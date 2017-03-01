@@ -10,11 +10,11 @@ import React from 'react';
 
 function ContactsList(props) {
   let content = (<li>Error</li>)
-  console.log(typeof props.items);
+  console.log(props.items);
 
   if (props.items) {
     content = props.items.map((item, index) => (
-      <li key={`item-${index}`}>{item}</li>
+      <li key={`item-${index}`}>{item.name}</li>
     ))
   }
 

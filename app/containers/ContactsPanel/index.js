@@ -21,7 +21,7 @@ import { makeSelectContactname, makeSelectContacts } from './selectors'
 export class ContactsPanel extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
   const { contacts, contactname } = this.props
-  console.log('CN: ', contacts);
+  console.log(contacts, typeof contacts);
 
     return (
       <ContactsPanelWrapper>
@@ -47,14 +47,19 @@ export class ContactsPanel extends React.PureComponent { // eslint-disable-line 
 ContactsPanel.propTypes = {
   dispatch: PropTypes.func.isRequired,
   contactname: React.PropTypes.string,
+  contacts: React.PropTypes.oneOfType([
+    React.PropTypes.array,
+    React.PropTypes.bool,
+  ]),
   onSubmitForm: React.PropTypes.func,
   onChangeContactname: React.PropTypes.func,
 };
 
-const mapStateToProps = createStructuredSelector({
+const mapStateToProps = createStructuredSelector ({
   contactname: makeSelectContactname(),
   contacts: makeSelectContacts(),
 })
+
 
 function mapDispatchToProps(dispatch) {
   return {

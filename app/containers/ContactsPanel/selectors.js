@@ -1,28 +1,14 @@
 import { createSelector } from 'reselect';
 
-const selectContacts = (state) => state.get('contacts');
-// const contactsListSelector = (state) => state.contacts.get('contactslist');
+const selectContacts = (state) => state.get('contacts')
 
-const makeSelectContactname = () => createSelector(
+export const makeSelectContactname = () => createSelector(
   selectContacts,
-  (contactsState) => contactsState.get('contactname')
-);
-
-const makeSelectContacts = () => createSelector(
-  selectContacts,
-  (contactsState) => contactsState
-    .get('contactslist')
-    // .map((item, key) => item.name)
-);
-/*
-const makeSelectContacts = createSelector(
-  contactsListSelector,
-  items => items.map((contact, key) => contact.name)
+  contactsState => contactsState.get('contactname')
 )
-*/
 
-export {
+export const makeSelectContacts = () => createSelector(
   selectContacts,
-  makeSelectContactname,
-  makeSelectContacts,
-};
+  contactsState => contactsState.get('contactslist')
+    //.map(contact => contact.name)
+)

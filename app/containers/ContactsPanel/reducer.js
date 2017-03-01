@@ -4,9 +4,37 @@ import {
   CHANGE_NAME
 } from './constants'
 
-import initData from './initData'
+const initData = {
+  contactname: '',
+  contactslist: false
+}
 
-const initialState = fromJS(initData)
+const fakeContacts = [
+  {
+    name: "John Doe",
+    messages: [
+      {
+        text: "Hello"
+      },
+      {
+        text: "Hi"
+      }
+    ]
+  },
+  {
+    name: "Jane Doe",
+    messages: [
+      {
+        text: "Good morning"
+      },
+      {
+        text: "Greetings"
+      }
+    ]
+  }
+]
+
+const initialState = fromJS(initData).set('contactslist', fakeContacts)
 
 function contactsReducer(state = initialState, action) {
   switch (action.type) {
