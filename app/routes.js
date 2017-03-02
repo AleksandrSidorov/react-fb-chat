@@ -32,27 +32,26 @@ export default function createRoutes(store) {
         });
 
         importModules.catch(errorLoading);
+      }
+    },
+    {
+      path: '/contacts/:id',
+      name: 'contacts',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ChatPanel'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
       },
-      childRoutes: [
-        {
-          path: '/contacts',
-          name: 'contacts',
-          getComponent(nextState, cb) {
-            const importModules = Promise.all([
-              import('containers/ChatPanel'),
-            ]);
-
-            const renderRoute = loadModule(cb);
-
-            importModules.then(([component]) => {
-              renderRoute(component);
-            });
-
-            importModules.catch(errorLoading);
-          },
-        },
-      ]
-    }, {
+    },
+    {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

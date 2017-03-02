@@ -11,6 +11,7 @@ const initData = {
 
 const fakeContacts = [
   {
+    id: "johndoe",
     name: "John Doe",
     online: true,
     img: "http://www.fillmurray.com/100/100",
@@ -24,6 +25,7 @@ const fakeContacts = [
     ]
   },
   {
+    id: "janedoe",
     name: "Jane Doe",
     online: false,
     img: "http://www.placecage.com/100/100",

@@ -18,6 +18,8 @@ import ContentWrapper from './ContentWrapper'
 import ContentWrapperName from './ContentWrapperName'
 import ContentName from './ContentName'
 import Abbr from './Abbr'
+import EventWrapper from './EventWrapper'
+import EventText from './EventText'
 
 
 export class ContactListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -30,7 +32,7 @@ export class ContactListItem extends React.PureComponent { // eslint-disable-lin
     `
 
     return (
-      <ContactWrapper>
+      <ContactWrapper to={`/contacts/${item.id}`}>
         <AvatarWrapper>
           <AvatarWrapperInner>
             <AvatarRound>
@@ -52,6 +54,11 @@ export class ContactListItem extends React.PureComponent { // eslint-disable-lin
               </Abbr>
             </div>
           </ContentWrapperName>
+          <EventWrapper>
+            <EventText>
+              Last Event
+            </EventText>
+          </EventWrapper>
         </ContentWrapper>
       </ContactWrapper>
     );
