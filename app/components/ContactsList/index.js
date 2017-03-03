@@ -16,7 +16,7 @@ function ContactsList(props) {
   if (props.items) {
     content = props.items.map((item, index) => (
       <li key={`item-${index}`}>
-        <ContactListItem item={item} />
+        <ContactListItem item={item} currentContact={props.currentContact}/>
       </li>
     ))
   }

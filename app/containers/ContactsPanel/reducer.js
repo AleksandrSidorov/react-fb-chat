@@ -1,11 +1,13 @@
 import { fromJS } from 'immutable'
 
 import {
-  CHANGE_NAME
+  CHANGE_NAME,
+  SET_CURRENT_CONTACT
 } from './constants'
 
 const initData = {
   contactname: '',
+  currentcontact: 'johndoe',
   contactslist: false
 }
 
@@ -17,9 +19,11 @@ const fakeContacts = [
     img: "http://www.fillmurray.com/100/100",
     messages: [
       {
+        incoming: false,
         text: "Hello"
       },
       {
+        incoming: true,
         text: "Hi"
       }
     ]
@@ -31,9 +35,11 @@ const fakeContacts = [
     img: "http://www.placecage.com/100/100",
     messages: [
       {
+        incoming: true,
         text: "Good morning"
       },
       {
+        incoming: false,
         text: "Greetings"
       }
     ]
@@ -47,6 +53,9 @@ function contactsReducer(state = initialState, action) {
     case CHANGE_NAME:
       return state
         .set('contactname', action.name.replace(/@/gi, ''))
+    case SET_CURRENT_CONTACT:
+      return state
+        .set('currentcontact', action.id)
     default:
       return state
   }

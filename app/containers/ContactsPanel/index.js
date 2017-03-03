@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
 
+// Styled components
 import ContactsPanelWrapper from './ContactsPanelWrapper'
 import SearchWrapper from './SearchWrapper'
 import Label from './Label'
@@ -16,11 +17,16 @@ import Input from './Input'
 import ContactsList from 'components/ContactsList'
 
 import { changeContactname } from './actions'
-import { makeSelectContactname, makeSelectContacts } from './selectors'
+import {
+  makeSelectContactname,
+  makeSelectContacts,
+  makeSelectCurrentContact
+} from './selectors'
 
 export class ContactsPanel extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
   render() {
-  const { contacts, contactname } = this.props
+  const { contacts, contactname, currentContact } = this.props
 
     return (
       <ContactsPanelWrapper>
@@ -31,13 +37,13 @@ export class ContactsPanel extends React.PureComponent { // eslint-disable-line 
                 id="contactname"
                 type="text"
                 placeholder="Search Contact"
-                value={this.props.username}
+                value={contactname}
                 onChange={this.props.onChangeContactname}
               />
             </Label>
           </form>
         </SearchWrapper>
-        <ContactsList items={contacts} />
+        <ContactsList items={contacts} currentContact={currentContact} />
       </ContactsPanelWrapper>
     );
   }
@@ -57,6 +63,7 @@ ContactsPanel.propTypes = {
 const mapStateToProps = createStructuredSelector ({
   contactname: makeSelectContactname(),
   contacts: makeSelectContacts(),
+  currentContact: makeSelectCurrentContact(),
 })
 
 

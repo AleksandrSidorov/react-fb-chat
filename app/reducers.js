@@ -9,6 +9,8 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import contactsReducer from 'containers/ContactsPanel/reducer'
+import chatReducer from 'containers/ChatPanel/reducer'
+import messageReducer from 'containers/MessageInput/reducer'
 
 /*
  * routeReducer
@@ -45,6 +47,8 @@ export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
     contacts: contactsReducer,
+    chat: chatReducer,
+    message: messageReducer,
     language: languageProviderReducer,
     ...asyncReducers,
   });

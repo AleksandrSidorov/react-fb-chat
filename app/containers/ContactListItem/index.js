@@ -8,6 +8,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components'
 
+import { setCurrentContact } from 'containers/ContactsPanel/actions'
+
 import ContactWrapper from './ContactWrapper'
 import AvatarWrapper from './AvatarWrapper'
 import AvatarWrapperInner from './AvatarWrapperInner'
@@ -32,7 +34,7 @@ export class ContactListItem extends React.PureComponent { // eslint-disable-lin
     `
 
     return (
-      <ContactWrapper to={`/contacts/${item.id}`}>
+      <ContactWrapper to={`/contacts/${item.id}`} onClick={this.props.onClickContact}>
         <AvatarWrapper>
           <AvatarWrapperInner>
             <AvatarRound>
@@ -71,9 +73,12 @@ ContactListItem.propTypes = {
 };
 
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
     dispatch,
+    onClickContact: () => {
+      dispatch(setCurrentContact(ownProps.item.id))
+    }
   };
 }
 

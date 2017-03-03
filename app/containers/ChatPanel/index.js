@@ -6,12 +6,25 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect'
+
+import ChatFeed from 'containers/ChatFeed'
+import MessageInput from 'containers/MessageInput'
+
+import { toggleChatSettings } from './actions'
+import { makeSelectToggleSettings } from './selectors'
 
 import ChatWrapper from './ChatWrapper'
 import ChatHeader from './ChatHeader'
 import HeaderInfo from './HeaderInfo'
 import HeaderInfoName from './HeaderInfoName'
 import HeaderInfoActivity from './HeaderInfoActivity'
+import HeaderSettings from './HeaderSettings'
+import ChatMainWrapper from './ChatMainWrapper'
+import ChatMain from './ChatMain'
+import ChatSettingsWrapper from './ChatSettingsWrapper'
+import ChatFeedWrapper from './ChatFeedWrapper'
+import ChatNewMessageWrapper from './ChatNewMessageWrapper'
 
 export class ChatPanel extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -24,8 +37,19 @@ export class ChatPanel extends React.PureComponent { // eslint-disable-line reac
             <HeaderInfoName>{id}</HeaderInfoName>
             <HeaderInfoActivity>{'Active'}</HeaderInfoActivity>
           </HeaderInfo>
+          <HeaderSettings onClick={this.props.onToggleSettings}>settings</HeaderSettings>
         </ChatHeader>
-        <div>{this.props.params.id}</div>
+        <ChatMainWrapper>
+          <ChatMain>
+            <ChatFeedWrapper>
+              <ChatFeed />
+            </ChatFeedWrapper>
+            <ChatNewMessageWrapper>
+              <MessageInput />
+            </ChatNewMessageWrapper>
+          </ChatMain>
+          {this.props.settings ? <ChatSettingsWrapper /> : null}
+        </ChatMainWrapper>
       </ChatWrapper>
     );
   }
@@ -33,13 +57,18 @@ export class ChatPanel extends React.PureComponent { // eslint-disable-line reac
 
 ChatPanel.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  settings: PropTypes.bool.isRequired,
 };
 
+const mapStateToProps = createStructuredSelector ({
+  settings: makeSelectToggleSettings(),
+})
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    onToggleSettings: () => dispatch(toggleChatSettings()),
   };
 }
 
-export default connect(null, mapDispatchToProps)(ChatPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(ChatPanel);
