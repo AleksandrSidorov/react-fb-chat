@@ -29,7 +29,7 @@ export class ContactListItem extends React.PureComponent { // eslint-disable-lin
     }
 
     return (
-      <ContactWrapper to={`/contacts/${item.id}`} onClick={this.props.onClickContact}>
+      <ContactWrapper to={`/contacts/${item.id}`} onClick={this.props.onClickContact} selected={this.props.selected}>
         <Avatar {...avatarProps} />
         <ContactBageInfo {...contactInfoProps} />
       </ContactWrapper>

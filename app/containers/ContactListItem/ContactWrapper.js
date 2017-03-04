@@ -7,6 +7,7 @@ const ContactWrapper = styled(Link)`
   cursor: pointer;
   padding-left: 12px;
   text-decoration: none;
+  background-color: ${props => props.selected ? 'rgba(0, 0, 0, .05)' : 'rgba(0, 0, 0, 0)'};
 
   &:hover {
     background-color: rgba(0, 0, 0, .05)

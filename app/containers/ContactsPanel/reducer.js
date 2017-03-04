@@ -1,5 +1,7 @@
 import { fromJS } from 'immutable'
 
+import { fakeContacts } from './contactsData'
+
 import {
   CHANGE_NAME,
   SET_CURRENT_CONTACT,
@@ -11,41 +13,6 @@ const initData = {
   currentcontact: 'johndoe',
   contactslist: false
 }
-
-const fakeContacts = [
-  {
-    id: "johndoe",
-    name: "John Doe",
-    online: true,
-    img: "http://www.fillmurray.com/100/100",
-    messages: [
-      {
-        incoming: false,
-        text: "Hello"
-      },
-      {
-        incoming: true,
-        text: "Hi"
-      }
-    ]
-  },
-  {
-    id: "janedoe",
-    name: "Jane Doe",
-    online: false,
-    img: "http://www.placecage.com/100/100",
-    messages: [
-      {
-        incoming: true,
-        text: "Good morning"
-      },
-      {
-        incoming: false,
-        text: "Greetings"
-      }
-    ]
-  }
-]
 
 const initialState = fromJS(initData).set('contactslist', fakeContacts)
 
