@@ -10,12 +10,15 @@ import { createStructuredSelector } from 'reselect';
 import makeSelectMessageInput from './selectors';
 
 import { changeMessage } from './actions'
+import { addMessage } from 'containers/ContactsPanel/actions'
 
 export class MessageInput extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const { message } = this.props
+
     return (
       <div>
-        <form>
+        <form onSubmit={this.props.onMessageSubmit}>
           <label>Message:
             <input
               placeholder="Enter Message"
@@ -37,10 +40,15 @@ const mapStateToProps = createStructuredSelector({
   message: makeSelectMessageInput(),
 });
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, state) {
   return {
     dispatch,
     onChangeMessage: (evt) => dispatch(changeMessage(evt.target.value)),
+    onMessageSubmit: (evt) => {
+      console.log(state);
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault()
+      dispatch(addMessage('johndoe', 'message'))
+    }
   };
 }
 

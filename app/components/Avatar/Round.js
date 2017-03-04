@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 
-const AvatarRound = styled.div`
+export const Round = styled.div`
   width: 50px;
   height: 50px;
+  position: relative;
+  display: flex;
   align-items: center;
+  justify-content: center;
   background-color: rgba(0, 0, 0, .05);
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
   overflow: hidden;
 `
-
-export default AvatarRound

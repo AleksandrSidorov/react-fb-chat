@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const OnlineStatusWrapper = styled.div`
+export const OnlineStatus = styled.div`
   position: absolute;
   bottom: -1px;
   right: -1px;
@@ -9,6 +9,5 @@ const OnlineStatusWrapper = styled.div`
   overflow: hidden;
   border-radius: 50%;
   border: 2px solid #fafafa;
+  background-color: ${props => props.online ? "#0084FF" : "#929292"};
 `
-
-export default OnlineStatusWrapper

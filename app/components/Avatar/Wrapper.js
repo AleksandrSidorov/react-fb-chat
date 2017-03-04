@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
-const AvatarWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   margin-right: 9px;
 `
-
-export default AvatarWrapper

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const ContentName = styled.span`
+export const Name = styled.span`
   flex: 1 1 0%;
   min-width: 0;
   overflow: hidden;
@@ -11,5 +11,3 @@ const ContentName = styled.span`
   font-weight: 400;
   line-height: 1.4;
 `
-
-export default ContentName

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const EventText = styled.span`
+export const EventText = styled.span`
   flex: 1 1 0%;
   min-width: 0;
   overflow: hidden;
@@ -12,5 +12,3 @@ const EventText = styled.span`
   height: 18px;
   margin-right: 20px;
 `
-
-export default EventText
