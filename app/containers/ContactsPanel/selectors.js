@@ -10,7 +10,6 @@ export const makeSelectContactname = () => createSelector(
 export const makeSelectContacts = () => createSelector(
   selectContacts,
   contactsState => contactsState.get('contactslist')
-    //.map(contact => contact.name)
 )
 
 export const makeSelectCurrentContact = () => createSelector(

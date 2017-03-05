@@ -17,7 +17,7 @@ import ContactWrapper from './ContactWrapper'
 
 export class ContactListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const item = this.props.item
+    const { item, selected } = this.props
 
     const avatarProps = {
       img: item.img,
@@ -29,7 +29,7 @@ export class ContactListItem extends React.PureComponent { // eslint-disable-lin
     }
 
     return (
-      <ContactWrapper to={`/contacts/${item.id}`} onClick={this.props.onClickContact} selected={this.props.selected}>
+      <ContactWrapper to={`/contacts/${item.id}`} onClick={this.props.onClickContact} selected={selected}>
         <Avatar {...avatarProps} />
         <ContactBageInfo {...contactInfoProps} />
       </ContactWrapper>
