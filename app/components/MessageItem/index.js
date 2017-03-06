@@ -6,11 +6,17 @@
 
 import React from 'react';
 // import styled from 'styled-components';
+import { Wrapper } from './Wrapper'
+import { MessageBaloon } from './MessageBaloon'
 
 function MessageItem(props) {
+  console.log('inc: ', props.incoming);
   return (
-    <div>
-    </div>
+    <Wrapper>
+      <MessageBaloon>
+        {props.children}
+      </MessageBaloon>
+    </Wrapper>
   );
 }
 

@@ -8,25 +8,27 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
 
+import MessageItem from 'components/MessageItem'
+
 import { makeSelectMessages } from 'containers/ContactsPanel/selectors'
 
 export class ChatFeed extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { messages } = this.props
-    let content = (<li>Error</li>)
+    let content = (<span>Error</span>)
 
     if (messages) {
       content = messages.map((message, index) => (
-        <li key={`message-${index}`}>
+        <MessageItem key={`message-${index}`} incoming={message.incoming}>
           {message.text}
-        </li>
+        </MessageItem>
       ))
     }
 
     return (
-      <ul>
+      <div>
         {content}
-      </ul>
+      </div>
     );
   }
 }
