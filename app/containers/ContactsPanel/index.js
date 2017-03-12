@@ -58,10 +58,10 @@ export class ContactsPanel extends React.PureComponent { // eslint-disable-line 
 ContactsPanel.propTypes = {
   dispatch: PropTypes.func.isRequired,
   contactname: React.PropTypes.string,
-  contacts: React.PropTypes.oneOfType([
+  /*contacts: React.PropTypes.oneOfType([
     React.PropTypes.array,
     React.PropTypes.bool,
-  ]),
+  ]),*/
   onSubmitForm: React.PropTypes.func,
   onChangeContactname: React.PropTypes.func,
 };

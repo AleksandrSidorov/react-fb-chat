@@ -11,13 +11,13 @@ import {
 const initData = {
   contactname: '',
   currentcontact: 'johndoe',
-  contactslist: false
-  //contactslist: fakeContacts
+  //contactslist: false
+  contactslist: fakeContacts
 }
 
-const initialState = fromJS(initData).set('contactslist', fakeContacts)
+//const initialState = fromJS(initData).set('contactslist', fakeContacts)
 
-//const initialState = fromJS(initData)
+const initialState = fromJS(initData)
 
 function contactsReducer(state = initialState, action) {
   switch (action.type) {

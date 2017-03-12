@@ -20,16 +20,16 @@ export class ContactListItem extends React.PureComponent { // eslint-disable-lin
     const { item, selected } = this.props
 
     const avatarProps = {
-      img: item.img,
-      online: item.online
+      img: item.get('img'),
+      online: item.get('online')
     }
 
     const contactInfoProps = {
-      name: item.name,
+      name: item.get('name'),
     }
 
     return (
-      <ContactWrapper to={`/contacts/${item.id}`} onClick={this.props.onClickContact} selected={selected}>
+      <ContactWrapper to={`/contacts/${item.get('id')}`} onClick={this.props.onClickContact} selected={selected}>
         <Avatar {...avatarProps} />
         <ContactBageInfo {...contactInfoProps} />
       </ContactWrapper>
@@ -46,7 +46,7 @@ function mapDispatchToProps(dispatch, ownProps) {
   return {
     dispatch,
     onClickContact: () => {
-      dispatch(setCurrentContact(ownProps.item.id))
+      dispatch(setCurrentContact(ownProps.item.get('id')))
     }
   };
 }

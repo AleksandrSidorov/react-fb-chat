@@ -22,7 +22,7 @@ export const makeSelectMessages = () => createSelector(
   (contacts) => {
     const name = contacts.get('currentcontact')
     const cont = contacts.get('contactslist')
-    const index = cont.findIndex(x => x.id == name)
-    return cont[index].messages
+    const index = cont.findIndex(x => x.get('id') == name)
+    return contacts.getIn('contactslist', index, 'messages')
   }
 )

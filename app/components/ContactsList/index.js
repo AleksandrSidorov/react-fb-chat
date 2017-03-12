@@ -15,8 +15,9 @@ function ContactsList(props) {
 
   if (props.items) {
     content = props.items.map((item, index) => {
-      const selected = item.id == props.currentContact
-      if(!props.search || item.name.toLowerCase().includes(props.search.toLowerCase())) {
+      console.log(index);
+      const selected = item.get('id') == props.currentContact
+      if(!props.search || item.get('name').toLowerCase().includes(props.search.toLowerCase())) {
         return (
           <li key={`item-${index}`}>
             <ContactListItem item={item} selected={selected} />
@@ -32,9 +33,5 @@ function ContactsList(props) {
     </Ul>
   );
 }
-
-ContactsList.propTypes = {
-
-};
 
 export default ContactsList;
