@@ -30,7 +30,7 @@ function contactsReducer(state = initialState, action) {
     case ADD_MESSAGE:
       const current = state.get('currentcontact')
       const index = state.get('contactslist').findIndex(x => x.get('id') == current)
-      const message = fromJS({ incoming: false, text: action.text })
+      const message = fromJS({ incoming: action.incoming, text: action.text })
       const newState = state.updateIn(['contactslist', index, 'messages'], arr => arr.push(message))
       return newState
     default:

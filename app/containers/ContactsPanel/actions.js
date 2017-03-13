@@ -18,9 +18,18 @@ export function setCurrentContact(id) {
   }
 }
 
-export function addMessage(text) {
+export function addMessage(text, incoming) {
   return {
     type: ADD_MESSAGE,
     text,
+    incoming
+  }
+}
+
+export function addFakeMessage(text = 'Random responce', incoming = true) {
+  return {
+    type: ADD_MESSAGE,
+    text,
+    incoming
   }
 }

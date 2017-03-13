@@ -12,7 +12,7 @@ import { toJS } from 'immutable';
 import { makeSelectMessageInput } from './selectors';
 
 import { changeMessage, clearMessageInput } from './actions'
-import { addMessage } from 'containers/ContactsPanel/actions'
+import { addMessage, addFakeMessage } from 'containers/ContactsPanel/actions'
 
 import { Wrapper } from './Wrapper'
 import { Textarea } from './Textarea'
@@ -27,8 +27,9 @@ export class MessageInput extends React.Component {
   submitMessage(evt) {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault()
     const { message } = this.props
+    const incoming = false
     if(message !== '') {
-      this.props.onMessageSubmit(message)
+      this.props.onMessageSubmit(message, incoming)
     }
   }
 
@@ -63,9 +64,11 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     onChangeMessage: (evt) => dispatch(changeMessage(evt.target.value)),
-    onMessageSubmit: (message) => {
-      dispatch(addMessage(message))
+    onMessageSubmit: (message, incoming) => {
+      dispatch(addMessage(message, incoming))
       dispatch(clearMessageInput())
+      setTimeout(() => {dispatch(addFakeMessage())}, 700)
+      //dispatch(addFakeMessage())
     }
   };
 }

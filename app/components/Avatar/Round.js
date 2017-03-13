@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const Round = styled.div`
-  width: 50px;
-  height: 50px;
+  width: ${props => props.small ? '32px' : '50px'};
+  height: ${props => props.small ? '32px' : '50px'};
   position: relative;
   display: flex;
   align-items: center;

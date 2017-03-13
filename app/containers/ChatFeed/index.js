@@ -15,11 +15,15 @@ import { makeSelectMessages } from 'containers/ContactsPanel/selectors'
 export class ChatFeed extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     const { messages } = this.props
+
     let content = (<span>Error</span>)
 
     if (messages) {
       content = messages.map((message, index) => (
-        <MessageItem key={`message-${index}`} incoming={message.get('incoming')}>
+        <MessageItem
+          key={`message-${index}`}
+          incoming={message.get('incoming')}
+        >
           {message.get('text')}
         </MessageItem>
       ))

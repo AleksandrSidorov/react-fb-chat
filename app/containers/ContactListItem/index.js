@@ -21,7 +21,8 @@ export class ContactListItem extends React.PureComponent { // eslint-disable-lin
 
     const avatarProps = {
       img: item.get('img'),
-      online: item.get('online')
+      online: item.get('online'),
+      small: false,
     }
 
     const contactInfoProps = {

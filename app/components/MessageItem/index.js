@@ -12,6 +12,7 @@ import { MessageBaloon } from './MessageBaloon'
 function MessageItem(props) {
   return (
     <Wrapper>
+      
       <MessageBaloon incoming={props.incoming}>
         {props.children}
       </MessageBaloon>
