@@ -17,7 +17,6 @@ const selectMessage = (state) => state.get('message');
 export const makeSelectMessageInput = () => createSelector(
   selectMessage,
   messageState => {
-    console.log(messageState.get('messageInput'))
     return messageState.get('messageInput')
   }
 );

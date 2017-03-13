@@ -15,6 +15,11 @@ import MessageInput from 'containers/MessageInput'
 import { toggleChatSettings } from './actions'
 import { makeSelectToggleSettings } from './selectors'
 
+import {
+  makeSelectCurrentContactName,
+  makeSelectOnlineStatus,
+} from 'containers/ContactsPanel/selectors'
+
 import ChatWrapper from './ChatWrapper'
 import ChatHeader from './ChatHeader'
 import HeaderInfo from './HeaderInfo'
@@ -35,8 +40,8 @@ export class ChatPanel extends React.PureComponent { // eslint-disable-line reac
       <ChatWrapper>
         <ChatHeader>
           <HeaderInfo>
-            <HeaderInfoName>{id}</HeaderInfoName>
-            <HeaderInfoActivity>{'Active'}</HeaderInfoActivity>
+            <HeaderInfoName>{this.props.currentContactName}</HeaderInfoName>
+            <HeaderInfoActivity>{this.props.onlineStatus ? 'Active' : 'Offline'}</HeaderInfoActivity>
           </HeaderInfo>
           <HeaderSettings onClick={this.props.onToggleSettings}>settings</HeaderSettings>
         </ChatHeader>
@@ -65,6 +70,8 @@ ChatPanel.propTypes = {
 
 const mapStateToProps = createStructuredSelector ({
   settings: makeSelectToggleSettings(),
+  currentContactName: makeSelectCurrentContactName(),
+  onlineStatus: makeSelectOnlineStatus(),
 })
 
 function mapDispatchToProps(dispatch) {

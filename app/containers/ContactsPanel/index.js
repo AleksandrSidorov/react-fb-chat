@@ -78,7 +78,6 @@ function mapDispatchToProps(dispatch) {
     onChangeContactname: (evt) => dispatch(changeContactname(evt.target.value)),
     onSubmitForm: (evt) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault()
-      dispatch(searchContacts())
     },
     dispatch,
   };

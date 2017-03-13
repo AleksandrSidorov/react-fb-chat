@@ -17,12 +17,35 @@ export const makeSelectCurrentContact = () => createSelector(
   contactsState => contactsState.get('currentcontact')
 )
 
+const selectCurrentIndex = () => createSelector(
+  selectContacts,
+  contacts => {
+    const currId = contacts.get('currentcontact')
+    const cont = contacts.get('contactslist')
+    return cont.findIndex(x => x.get('id') == currId)
+  }
+)
+
+export const makeSelectCurrentContactName = () => createSelector(
+  selectContacts,
+  selectCurrentIndex(),
+  (contacts, index) => {
+    return contacts.getIn(['contactslist', index, 'name'])
+  }
+)
+
 export const makeSelectMessages = () => createSelector(
   selectContacts,
-  (contacts) => {
-    const name = contacts.get('currentcontact')
-    const cont = contacts.get('contactslist')
-    const index = cont.findIndex(x => x.get('id') == name)
+  selectCurrentIndex(),
+  (contacts, index) => {
     return contacts.getIn(['contactslist', index, 'messages'])
+  }
+)
+
+export const makeSelectOnlineStatus = () => createSelector(
+  selectContacts,
+  selectCurrentIndex(),
+  (contacts, index) => {
+    return contacts.getIn(['contactslist', index, 'online'])
   }
 )
