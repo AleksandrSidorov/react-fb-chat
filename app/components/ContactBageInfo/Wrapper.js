@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const ContentWrapper = styled.div`
+export const Wrapper = styled.div`
   flex: 1 1 auto;
   justify-content: center;
   min-width: 0;
@@ -8,5 +8,3 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `
-
-export default ContentWrapper

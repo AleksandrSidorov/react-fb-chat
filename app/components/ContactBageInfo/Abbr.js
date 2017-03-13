@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Abbr = styled.abbr`
+export const Abbr = styled.abbr`
   color: rgba(0, 0, 0, .40);
   display: inline-block;
   font-size: 13px;
@@ -9,5 +9,3 @@ const Abbr = styled.abbr`
   text-decoration: none;
   border-bottom: none;
 `
-
-export default Abbr

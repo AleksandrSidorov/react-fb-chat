@@ -1,52 +1,23 @@
 import { fromJS } from 'immutable'
 
+import { fakeContacts } from './contactsData'
+
 import {
   CHANGE_NAME,
-  SET_CURRENT_CONTACT
+  SET_CURRENT_CONTACT,
+  ADD_MESSAGE,
 } from './constants'
 
 const initData = {
   contactname: '',
   currentcontact: 'johndoe',
-  contactslist: false
+  //contactslist: false
+  contactslist: fakeContacts
 }
 
-const fakeContacts = [
-  {
-    id: "johndoe",
-    name: "John Doe",
-    online: true,
-    img: "http://www.fillmurray.com/100/100",
-    messages: [
-      {
-        incoming: false,
-        text: "Hello"
-      },
-      {
-        incoming: true,
-        text: "Hi"
-      }
-    ]
-  },
-  {
-    id: "janedoe",
-    name: "Jane Doe",
-    online: false,
-    img: "http://www.placecage.com/100/100",
-    messages: [
-      {
-        incoming: true,
-        text: "Good morning"
-      },
-      {
-        incoming: false,
-        text: "Greetings"
-      }
-    ]
-  }
-]
+//const initialState = fromJS(initData).set('contactslist', fakeContacts)
 
-const initialState = fromJS(initData).set('contactslist', fakeContacts)
+const initialState = fromJS(initData)
 
 function contactsReducer(state = initialState, action) {
   switch (action.type) {
@@ -56,6 +27,15 @@ function contactsReducer(state = initialState, action) {
     case SET_CURRENT_CONTACT:
       return state
         .set('currentcontact', action.id)
+    case ADD_MESSAGE:
+      const id = action.id
+      const newcl = state.get('contactslist').slice()
+      const index = newcl.findIndex(x => x.id == id)
+      console.log(newcl, id, index, action.text);
+      newcl[index].messages.push({ incoming: false, text: action.text })
+      console.log(newcl)
+      return state
+        .set('contactslist', newcl)
     default:
       return state
   }

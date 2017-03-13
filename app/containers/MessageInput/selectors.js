@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the messageInput state domain
  */
-const selectMessageInput = () => (state) => state.get('messageInput');
+const selectMessage = (state) => state.get('message');
 
 /**
  * Other specific selectors
@@ -14,12 +14,7 @@ const selectMessageInput = () => (state) => state.get('messageInput');
  * Default selector used by MessageInput
  */
 
-const makeSelectMessageInput = () => createSelector(
-  selectMessageInput(),
-  (substate) => substate
+export const makeSelectMessageInput = () => createSelector(
+  selectMessage,
+  messageState => messageState.get('messageInput')
 );
-
-export default makeSelectMessageInput;
-export {
-  selectMessageInputDomain,
-};

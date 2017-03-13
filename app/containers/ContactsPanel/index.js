@@ -7,10 +7,12 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
+import { Scrollbars } from 'react-custom-scrollbars'
 
 // Styled components
 import ContactsPanelWrapper from './ContactsPanelWrapper'
 import SearchWrapper from './SearchWrapper'
+import {WrapperList} from './WrapperList'
 import Label from './Label'
 import Input from './Input'
 
@@ -43,7 +45,11 @@ export class ContactsPanel extends React.PureComponent { // eslint-disable-line 
             </Label>
           </form>
         </SearchWrapper>
-        <ContactsList items={contacts} currentContact={currentContact} />
+        <WrapperList>
+          <Scrollbars autoHide={true}  style={{ height: '100%' }}>
+            <ContactsList items={contacts} currentContact={currentContact} search={contactname} />
+          </Scrollbars>
+        </WrapperList>
       </ContactsPanelWrapper>
     );
   }
@@ -52,10 +58,10 @@ export class ContactsPanel extends React.PureComponent { // eslint-disable-line 
 ContactsPanel.propTypes = {
   dispatch: PropTypes.func.isRequired,
   contactname: React.PropTypes.string,
-  contacts: React.PropTypes.oneOfType([
+  /*contacts: React.PropTypes.oneOfType([
     React.PropTypes.array,
     React.PropTypes.bool,
-  ]),
+  ]),*/
   onSubmitForm: React.PropTypes.func,
   onChangeContactname: React.PropTypes.func,
 };
