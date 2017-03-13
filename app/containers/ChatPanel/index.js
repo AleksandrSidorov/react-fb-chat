@@ -11,6 +11,7 @@ import { Scrollbars } from 'react-custom-scrollbars'
 
 import ChatFeed from 'containers/ChatFeed'
 import MessageInput from 'containers/MessageInput'
+import InfoIcon from 'components/InfoIcon'
 
 import { toggleChatSettings } from './actions'
 import { makeSelectToggleSettings } from './selectors'
@@ -43,7 +44,9 @@ export class ChatPanel extends React.PureComponent { // eslint-disable-line reac
             <HeaderInfoName>{this.props.currentContactName}</HeaderInfoName>
             <HeaderInfoActivity>{this.props.onlineStatus ? 'Active' : 'Offline'}</HeaderInfoActivity>
           </HeaderInfo>
-          <HeaderSettings onClick={this.props.onToggleSettings}>settings</HeaderSettings>
+          <HeaderSettings onClick={this.props.onToggleSettings}>
+            <InfoIcon />
+          </HeaderSettings>
         </ChatHeader>
         <ChatMainWrapper>
           <ChatMain>

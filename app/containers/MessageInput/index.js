@@ -18,19 +18,33 @@ import { Wrapper } from './Wrapper'
 import { Textarea } from './Textarea'
 import { SendButton } from './SendButton'
 
-export class MessageInput extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class MessageInput extends React.Component {
+  constructor(props) {
+    super(props)
+    this.submitMessage = this.submitMessage.bind(this)
+  }
+
+  submitMessage(evt) {
+    if (evt !== undefined && evt.preventDefault) evt.preventDefault()
+    const { message } = this.props
+    if(message !== '') {
+      this.props.onMessageSubmit(message)
+    }
+  }
+
   render() {
     const { message } = this.props
 
     return (
-      <form onSubmit={this.props.onMessageSubmit}>
+      <form onSubmit={this.submitMessage}>
       <Wrapper>
-          <Textarea
-            placeholder="Type a message..."
-            value={this.props.message}
-            onChange={this.props.onChangeMessage}
-           />
-          <SendButton type="submit">Send</SendButton>
+        <Textarea
+          placeholder="Type a message..."
+          value={this.props.message}
+          onChange={this.props.onChangeMessage}
+         />
+         {this.props.message ? <SendButton type="submit">Send</SendButton> : <div/>}
+
         </Wrapper>
       </form>
     );
@@ -49,11 +63,8 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     onChangeMessage: (evt) => dispatch(changeMessage(evt.target.value)),
-    onMessageSubmit: (evt) => {
-      const mess = makeSelectMessageInput();
-      console.log();
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault()
-      dispatch(addMessage('New message'))
+    onMessageSubmit: (message) => {
+      dispatch(addMessage(message))
       dispatch(clearMessageInput())
     }
   };
