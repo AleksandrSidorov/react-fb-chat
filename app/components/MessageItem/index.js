@@ -5,15 +5,14 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+
 import { Wrapper } from './Wrapper'
 import { MessageBaloon } from './MessageBaloon'
 
 function MessageItem(props) {
-  console.log('inc: ', props.incoming);
   return (
     <Wrapper>
-      <MessageBaloon>
+      <MessageBaloon incoming={props.incoming}>
         {props.children}
       </MessageBaloon>
     </Wrapper>

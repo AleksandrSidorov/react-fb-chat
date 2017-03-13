@@ -18,10 +18,9 @@ export function setCurrentContact(id) {
   }
 }
 
-export function addMessage(id,text) {
+export function addMessage(text) {
   return {
     type: ADD_MESSAGE,
-    id,
     text,
   }
 }

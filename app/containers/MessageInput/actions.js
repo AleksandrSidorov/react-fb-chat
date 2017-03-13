@@ -6,6 +6,7 @@
 
 import {
   CHANGE_MESSAGE,
+  CLEAR_MESSAGE_INPUT,
 } from './constants';
 
 export function changeMessage(message) {
@@ -13,4 +14,10 @@ export function changeMessage(message) {
     type: CHANGE_MESSAGE,
     message
   };
+}
+
+export function clearMessageInput() {
+  return {
+    type: CLEAR_MESSAGE_INPUT
+  }
 }

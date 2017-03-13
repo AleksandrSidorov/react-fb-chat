@@ -11,7 +11,7 @@ import { toJS } from 'immutable';
 
 import { makeSelectMessageInput } from './selectors';
 
-import { changeMessage } from './actions'
+import { changeMessage, clearMessageInput } from './actions'
 import { addMessage } from 'containers/ContactsPanel/actions'
 
 export class MessageInput extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -42,15 +42,16 @@ const mapStateToProps = createStructuredSelector({
   message: makeSelectMessageInput(),
 });
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     onChangeMessage: (evt) => dispatch(changeMessage(evt.target.value)),
     onMessageSubmit: (evt) => {
       const mess = makeSelectMessageInput();
-      console.log('message: ', ownProps);
+      console.log(mess);
       if (evt !== undefined && evt.preventDefault) evt.preventDefault()
-      dispatch(addMessage('johndoe', 'message'))
+      dispatch(addMessage('New message'))
+      dispatch(clearMessageInput())
     }
   };
 }

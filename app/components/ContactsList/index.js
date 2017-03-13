@@ -15,7 +15,6 @@ function ContactsList(props) {
 
   if (props.items) {
     content = props.items.map((item, index) => {
-      console.log(index);
       const selected = item.get('id') == props.currentContact
       if(!props.search || item.get('name').toLowerCase().includes(props.search.toLowerCase())) {
         return (

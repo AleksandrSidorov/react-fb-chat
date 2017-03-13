@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
+import { Scrollbars } from 'react-custom-scrollbars'
 
 import ChatFeed from 'containers/ChatFeed'
 import MessageInput from 'containers/MessageInput'
@@ -42,13 +43,15 @@ export class ChatPanel extends React.PureComponent { // eslint-disable-line reac
         <ChatMainWrapper>
           <ChatMain>
             <ChatFeedWrapper>
-              <ChatFeed />
+              <Scrollbars autoHide={true}  style={{ height: '100%' }}>
+                <ChatFeed />
+              </Scrollbars>
             </ChatFeedWrapper>
             <ChatNewMessageWrapper>
               <MessageInput />
             </ChatNewMessageWrapper>
           </ChatMain>
-          {this.props.settings ? <ChatSettingsWrapper /> : null}
+          {this.props.settings ? <ChatSettingsWrapper>Settings here</ChatSettingsWrapper> : null}
         </ChatMainWrapper>
       </ChatWrapper>
     );

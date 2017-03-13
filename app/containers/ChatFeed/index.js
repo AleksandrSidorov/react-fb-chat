@@ -19,8 +19,8 @@ export class ChatFeed extends React.PureComponent { // eslint-disable-line react
 
     if (messages) {
       content = messages.map((message, index) => (
-        <MessageItem key={`message-${index}`} incoming={message.incoming}>
-          {message.text}
+        <MessageItem key={`message-${index}`} incoming={message.get('incoming')}>
+          {message.get('text')}
         </MessageItem>
       ))
     }

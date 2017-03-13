@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const MessageBaloon = styled.div`
   color: #fff;
-  background-color: #0084ff;
+  background-color:${props => props.incoming ? 'gray' : '#0084ff'};
   border-radius: 1.3em;
   margin: 1px 0;
   padding: 6px 12px;
