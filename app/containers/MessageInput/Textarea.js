@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Textarea = styled.textarea`
+export const Textarea = styled.input`
   position: absolute;
   bottom: 0;
   left: 0;

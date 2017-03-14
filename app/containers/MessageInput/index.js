@@ -13,6 +13,7 @@ import { makeSelectMessageInput } from './selectors';
 
 import { changeMessage, clearMessageInput } from './actions'
 import { addMessage, addFakeMessage } from 'containers/ContactsPanel/actions'
+import InputFile from 'components/InputFile'
 
 import { Wrapper } from './Wrapper'
 import { Textarea } from './Textarea'
@@ -44,6 +45,7 @@ export class MessageInput extends React.Component {
           value={this.props.message}
           onChange={this.props.onChangeMessage}
          />
+         <InputFile />
          {this.props.message ? <SendButton type="submit">Send</SendButton> : <div/>}
 
         </Wrapper>
