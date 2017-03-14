@@ -4,6 +4,7 @@ export const fakeContacts = [
     name: "John Doe",
     online: true,
     img: "http://www.fillmurray.com/100/100",
+    link: "https://google.com",
     messages: [
       {
         incoming: false,
@@ -20,6 +21,7 @@ export const fakeContacts = [
     name: "Jane Doe",
     online: false,
     img: "http://www.placecage.com/100/100",
+    link: "https://google.com",
     messages: [
       {
         incoming: true,
@@ -36,6 +38,7 @@ export const fakeContacts = [
     name: "Chewbakka",
     online: true,
     img: "http://www.fillmurray.com/100/100",
+    link: "https://google.com",
     messages: [
       {
         incoming: false,
@@ -52,6 +55,7 @@ export const fakeContacts = [
     name: "Fake Person",
     online: true,
     img: "http://www.placecage.com/100/100",
+    link: "https://google.com",
     messages: [
       {
         incoming: true,
@@ -68,6 +72,7 @@ export const fakeContacts = [
     name: "Random Man",
     online: false,
     img: "http://www.fillmurray.com/100/100",
+    link: "https://google.com",
     messages: [
       {
         incoming: false,
@@ -84,6 +89,7 @@ export const fakeContacts = [
     name: "Hello World",
     online: false,
     img: "http://www.placecage.com/100/100",
+    link: "https://google.com",
     messages: [
       {
         incoming: true,

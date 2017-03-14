@@ -10,11 +10,19 @@ import { createStructuredSelector } from 'reselect'
 
 import MessageItem from 'components/MessageItem'
 
-import { makeSelectMessages } from 'containers/ContactsPanel/selectors'
+import {
+  makeSelectMessages,
+  makeSelectOnlineStatus,
+  makeSelectAvatar
+} from 'containers/ContactsPanel/selectors'
 
 export class ChatFeed extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { messages } = this.props
+    const {
+      messages,
+      online,
+      avatar
+    } = this.props
 
     let content = (<span>Error</span>)
 
@@ -23,6 +31,8 @@ export class ChatFeed extends React.PureComponent { // eslint-disable-line react
         <MessageItem
           key={`message-${index}`}
           incoming={message.get('incoming')}
+          online={online}
+          avatar={avatar}
         >
           {message.get('text')}
         </MessageItem>
@@ -44,6 +54,8 @@ ChatFeed.propTypes = {
 
 const mapStateToProps = createStructuredSelector ({
   messages: makeSelectMessages(),
+  avatar: makeSelectAvatar(),
+  online: makeSelectOnlineStatus()
 })
 
 

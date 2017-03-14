@@ -7,12 +7,13 @@
 import React from 'react';
 
 import InfoSVG from 'static/img/info.svg'
+import Wrapper from './Wrapper'
 
 function InfoIcon(props) {
   return (
-    <div>
+    <Wrapper>
       <img src={InfoSVG}></img>
-    </div>
+    </Wrapper>
   );
 }
 

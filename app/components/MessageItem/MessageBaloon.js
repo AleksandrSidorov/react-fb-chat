@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const MessageBaloon = styled.div`
-  float: ${props => props.incoming == true ? 'left' : 'right'};
+  align-self: ${props => props.incoming == true ? 'flex-start' : 'flex-end'};
   color: ${props => props.incoming ? '#000' : '#fff'};
   background-color:${props => props.incoming ? '#f1f0f0' : '#0084ff'};
   border-radius: 1.3em;

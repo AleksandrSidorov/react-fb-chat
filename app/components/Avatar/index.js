@@ -28,11 +28,13 @@ function Avatar(props) {
 Avatar.propTypes = {
   img: PropTypes.string,
   online: PropTypes.bool.isRequired,
+  small: PropTypes.bool
 }
 
 Avatar.defaultProps = {
   img: '',
   online: false,
+  small: false,
 }
 
 export default Avatar

@@ -12,6 +12,7 @@ import { Scrollbars } from 'react-custom-scrollbars'
 import ChatFeed from 'containers/ChatFeed'
 import MessageInput from 'containers/MessageInput'
 import InfoIcon from 'components/InfoIcon'
+import ContactSettings from 'containers/ContactSettings'
 
 import { toggleChatSettings } from './actions'
 import { makeSelectToggleSettings } from './selectors'
@@ -59,7 +60,7 @@ export class ChatPanel extends React.PureComponent { // eslint-disable-line reac
               <MessageInput />
             </ChatNewMessageWrapper>
           </ChatMain>
-          {this.props.settings ? <ChatSettingsWrapper>Settings here</ChatSettingsWrapper> : null}
+          {this.props.settings ? <ChatSettingsWrapper><ContactSettings /></ChatSettingsWrapper> : null}
         </ChatMainWrapper>
       </ChatWrapper>
     );

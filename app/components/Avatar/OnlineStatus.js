@@ -4,8 +4,8 @@ export const OnlineStatus = styled.div`
   position: absolute;
   bottom: -1px;
   right: -1px;
-  height: 16px;
-  width: 16px;
+  height: ${props => props.small ? '11px' : '16px'};
+  width: ${props => props.small ? '11px' : '16px'};
   overflow: hidden;
   border-radius: 50%;
   border: 2px solid #fafafa;

@@ -26,6 +26,15 @@ const selectCurrentIndex = () => createSelector(
   }
 )
 
+export const makeSelectContactInfo = () => createSelector(
+  selectContacts,
+  selectCurrentIndex(),
+  (contacts, index) => {
+    const fullInfo = contacts.getIn(['contactslist', index])
+    return fullInfo.delete('messages')
+  }
+)
+
 export const makeSelectCurrentContactName = () => createSelector(
   selectContacts,
   selectCurrentIndex(),
@@ -47,5 +56,13 @@ export const makeSelectOnlineStatus = () => createSelector(
   selectCurrentIndex(),
   (contacts, index) => {
     return contacts.getIn(['contactslist', index, 'online'])
+  }
+)
+
+export const makeSelectAvatar = () => createSelector(
+  selectContacts,
+  selectCurrentIndex(),
+  (contacts, index) => {
+    return contacts.getIn(['contactslist', index, 'img'])
   }
 )

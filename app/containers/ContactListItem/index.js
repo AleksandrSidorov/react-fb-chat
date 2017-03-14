@@ -8,8 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components'
 
-import Avatar from 'components/Avatar'
-import ContactBageInfo from 'components/ContactBageInfo'
+import ContactBage from 'components/ContactBage'
 
 import { setCurrentContact } from 'containers/ContactsPanel/actions'
 
@@ -19,20 +18,9 @@ export class ContactListItem extends React.PureComponent { // eslint-disable-lin
   render() {
     const { item, selected } = this.props
 
-    const avatarProps = {
-      img: item.get('img'),
-      online: item.get('online'),
-      small: false,
-    }
-
-    const contactInfoProps = {
-      name: item.get('name'),
-    }
-
     return (
       <ContactWrapper to={`/contacts/${item.get('id')}`} onClick={this.props.onClickContact} selected={selected}>
-        <Avatar {...avatarProps} />
-        <ContactBageInfo {...contactInfoProps} />
+        <ContactBage item={item} />
       </ContactWrapper>
     );
   }
